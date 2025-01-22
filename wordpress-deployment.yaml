@@ -30,7 +30,10 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: mysql
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-secret
+              key: WORDPRESS_DB_HOST
         - name: WORDPRESS_DB_PASSWORD
           value: password
         ports:
